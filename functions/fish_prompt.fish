@@ -1,4 +1,4 @@
-# Defined in /home/ivan/.config/fish/config.fish @ line 317
+# Defined in /home/ivan/.config/fish/config.fish @ line 336
 function fish_prompt
     set -l __last_command_exit_status $status
 
@@ -85,5 +85,5 @@ function fish_prompt
         end
     end
 
-    echo -n -s $arrow ' '$cwd $repo_info $normal ' '
+    echo -n -s $arrow ''$cwd $repo_info $normal ' '
 end
