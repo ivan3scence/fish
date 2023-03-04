@@ -499,3 +499,4 @@ end
 
 bind \cf accept-autosuggestion execute
 
+transset -a .85
