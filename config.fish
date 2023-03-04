@@ -498,3 +498,5 @@ function _is_git_dirty
 end
 
 bind \cf accept-autosuggestion execute
+
+picom --daemon
