@@ -499,4 +499,3 @@ end
 
 bind \cf accept-autosuggestion execute
 
-picom --daemon
