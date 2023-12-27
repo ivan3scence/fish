@@ -16,6 +16,8 @@ set -U fish_user_paths $HOME/.local/bin $HOME/Applications $fish_user_paths /sbi
 set fish_greeting                                 # Supresses fish's intro message
 set TERM "xterm-256color"                         # Sets the terminal type
 
+set -x _JAVA_AWT_WM_NONREPARENTING 1
+
 
 ### "bat" as manpager
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -469,6 +471,14 @@ funcsave fish_prompt
 #  echo -n -s $initial_indicator $whitespace $cwd $git_info $whitespace $ahead $status_indicator $whitespace
 #end
 
+# get fastest mirrors
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+
+
+
 function _git_ahead
   set -l commits (command git rev-list --left-right '@{upstream}...HEAD' 2>/dev/null)
   if [ $status != 0 ]
@@ -499,4 +509,4 @@ end
 
 bind \cf accept-autosuggestion execute
 
-transset -a .8
+transset-df -a .8
