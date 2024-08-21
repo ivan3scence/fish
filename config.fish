@@ -10,7 +10,7 @@
 # First line removes the path; second line sets it.  Without the first line,
 # your path gets massive and fish becomes very slow.
 set -e fish_user_paths
-set -U fish_user_paths $HOME/.local/bin $HOME/Applications $fish_user_paths /sbin
+set -U fish_user_paths /usr/share/elasticsearch/bin/ $HOME/myscripts/ /opt/nvim-linux64/bin $HOME/.local/bin $HOME/Applications $fish_user_paths /sbin
 
 ### EXPORT ###
 set fish_greeting                                 # Supresses fish's intro message
@@ -20,7 +20,7 @@ set -x _JAVA_AWT_WM_NONREPARENTING 1
 
 
 ### "bat" as manpager
-set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+set -x MANPAGER "sh -c 'col -bx | batcat -l man -p'"
 
 ### "vim" as manpager
  #set -x MANPAGER '/bin/bash -c "vim -MRn -c \"set buftype=nofile showtabline=0 ft=man ts=8 nomod nolist norelativenumber nonu noma\" -c \"normal L\" -c \"nmap q :qa<CR>\"</dev/tty <(col -b)"'
@@ -224,7 +224,8 @@ end
 
 ### ALIASES ###
 #alias ca='/usr/bin/cat'
-alias cat='bat -p'
+alias cat='batcat -p'
+alias wireshark='sudo wireshark'
 # \x1b[2J   <- clears tty
 # \x1b[1;1H <- goes to (1, 1) (start)
 alias clear='echo -en "\x1b[2J\x1b[1;1H" ; echo; echo; seq 1 (tput cols) | sort -R | spark | lolcat; echo; echo'
@@ -509,4 +510,3 @@ end
 
 bind \cf accept-autosuggestion execute
 
-transset-df -a .8
